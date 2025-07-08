@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Navbar = () => {
@@ -13,53 +14,39 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-56 p-2 shadow">
                         <li><a>За нас</a></li>
                         <li>
-                            <a>Групи по година на раждане</a>
+                            <a>График тренировки</a>
                             <ul className="p-2">
                                 <li><a>2007</a></li>
                                 <li><a>2008</a></li>
-                                <li><a>2009</a></li>
-                                <li><a>2010</a></li>
-                                <li><a>2011</a></li>
-                                <li><a>2012</a></li>
-                                <li><a>2013</a></li>
-                                <li><a>2014</a></li>
-                                <li><a>2015</a></li>
-                                <li><a>2016</a></li>
-                                <li><a>2017</a></li>
                             </ul>
                         </li>
                         <li><a>Новини</a></li>
+                        <li><a>Треньори</a></li>
                         <li><a>Галерия</a></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-3xl"> <img
+                <Image
                     src="/Logo_Olympic.png"
                     alt="ФК Олимпик Варна Лого"
-                    className="h-10 w-auto"
-                /></a>
+                    width={50}
+                    height={20}
+                    className="w-auto h-auto"
+                />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><a>За нас</a></li>
                     <li>
                         <details>
-                            <summary>Групи по година на раждане</summary>
+                            <summary>График тренировки</summary>
                             <ul className="p-2">
                                 <li><a>2007</a></li>
                                 <li><a>2008</a></li>
-                                <li><a>2009</a></li>
-                                <li><a>2010</a></li>
-                                <li><a>2011</a></li>
-                                <li><a>2012</a></li>
-                                <li><a>2013</a></li>
-                                <li><a>2014</a></li>
-                                <li><a>2015</a></li>
-                                <li><a>2016</a></li>
-                                <li><a>2017</a></li>
                             </ul>
                         </details>
                     </li>
                     <li><a>Новини</a></li>
+                    <li><a>Треньори</a></li>
                     <li><a>Галерия</a></li>
                 </ul>
             </div>

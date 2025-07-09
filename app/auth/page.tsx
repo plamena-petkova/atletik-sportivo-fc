@@ -2,11 +2,15 @@
 
 import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Navbar from '../components/Navbar';
+import { useAuth } from '../context/AuthContext';
 
 export default function AuthPage() {
 
   const router = useRouter();
+
+  const {user} = useAuth();
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -42,7 +46,17 @@ export default function AuthPage() {
     setLoading(false)
   }
 
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.push('/');
+    }
+  }, [user, loading, router]);
+
+
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen bg-base-200 flex items-center justify-center px-4">
       <div className="card max-w-md w-full bg-white rounded-xl shadow-2xl p-8">
         <h2 className="text-3xl font-extrabold text-center mb-6 text-secondary">
@@ -124,5 +138,6 @@ export default function AuthPage() {
         </p>
       </div>
     </div>
+    </>
   )
 }

@@ -13,8 +13,8 @@ const Footer = () => {
                     className="w-auto h-auto"
                 />
                 <p>
-                    ФК Олимпик Варна
-                    2016
+                    ФК Атлетик Спортиво
+                    2025
                 </p>
                 <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
             </aside>

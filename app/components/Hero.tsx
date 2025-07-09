@@ -4,14 +4,14 @@ import React from 'react';
 const Hero = () => {
     return (
         <div
-            className="hero min-h-screen-3/4"
+            className="hero min-h-screen"
             style={{
                 backgroundImage:
                     "url(/hero.jpg)",
             }}
         >
             <div className="hero-overlay"></div>
-            <div className="hero-content text-neutral-content text-center">
+            <div className="hero-content flex flex-col text-neutral-content text-center sm:flex-row">
                 <Image
                     src="/Logo_Olympic.png"
                     alt="ФК Олимпик Варна Лого"

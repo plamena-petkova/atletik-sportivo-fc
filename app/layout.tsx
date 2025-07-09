@@ -7,11 +7,6 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata:Metadata = {
   title: "ФК Олимпик Варна",
   description: "Official site of FK Olimpik Varna",
@@ -23,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="bg" data-theme="customTheme">
+    <html lang="bg" data-theme="customTheme" className={geistSans.className}>
       <body
       >
         {children}

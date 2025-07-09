@@ -38,37 +38,3 @@ const Footer = () => {
 
 export default Footer;
 
-/*
-        <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
-            <aside className='flex flex-col items-center text-center'>
-                <Image
-                    src="/Logo_Olympic.png"
-                    alt="ФК Олимпик Варна Лого"
-                    width={50}
-                    height={40}
-                    className="w-auto h-auto"
-                />
-                <p>
-                    ФК Олимпик Варна
-                    <br />
-                    2016
-                </p>
-            </aside>
-            <nav>
-                <h6 className="footer-title">Social</h6>
-                <div className="grid grid-flow-col gap-4">
-                    <a className='btn btn-secondary' href='https://www.facebook.com/f.c.olympicvarna'>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            className="fill-current">
-                            <path
-                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-                        </svg>
-                    </a>
-                </div>
-            </nav>
-        </footer>
-        */

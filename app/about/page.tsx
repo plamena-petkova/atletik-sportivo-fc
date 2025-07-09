@@ -1,5 +1,6 @@
 'use client';
 
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const coaches = [
@@ -49,6 +50,7 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

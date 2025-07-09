@@ -13,16 +13,10 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-56 p-2 shadow">
                         <li><a href='/about'>За нас</a></li>
-                        <li>
-                            <a>График тренировки</a>
-                            <ul className="p-2">
-                                <li><a>2007</a></li>
-                                <li><a>2008</a></li>
-                            </ul>
-                        </li>
+                        <li> <a href="/schedule">График тренировки</a></li>
                         <li><a>Новини</a></li>
 
-                        <li><a>Галерия</a></li>
+                        <li><a href="/gallery">Галерия</a></li>
                     </ul>
                 </div>
                 <a href="/">
@@ -39,17 +33,11 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">
                     <li><a href='/about'>За нас</a></li>
                     <li>
-                        <details>
-                            <summary>График тренировки</summary>
-                            <ul className="p-2">
-                                <li><a>2007</a></li>
-                                <li><a>2008</a></li>
-                            </ul>
-                        </details>
+                        <a href="/schedule">График тренировки</a>
                     </li>
                     <li><a>Новини</a></li>
 
-                    <li><a>Галерия</a></li>
+                    <li><a href="/gallery">Галерия</a></li>
                 </ul>
             </div>
             <div className="navbar-end">

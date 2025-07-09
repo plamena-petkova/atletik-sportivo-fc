@@ -21,8 +21,8 @@ const Navbar = () => {
                 </div>
                 <a href="/">
                     <Image
-                        src="/Logo_Olympic.png"
-                        alt="ФК Олимпик Варна Лого"
+                        src="/Logo_Sportivo.png"
+                        alt="ФК Атлетик Спортиво Лого"
                         width={50}
                         height={20}
                         className="w-auto h-auto"
@@ -41,7 +41,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className='btn btn-secondary mr-4' href="https://www.facebook.com/f.c.olympicvarna" target='_blank'> <svg
+                <a className='btn btn-secondary mr-4' href="https://www.facebook.com/" target='_blank'> <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
                     fill="currentColor"

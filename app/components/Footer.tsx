@@ -6,8 +6,8 @@ const Footer = () => {
         <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4 justify-around">
             <aside className="grid-flow-col items-center text-center">
                 <Image
-                    src="/Logo_Olympic.png"
-                    alt="ФК Олимпик Варна Лого"
+                    src="/Logo_Sportivo.png"
+                    alt="ФК Атлетик Спортиво Лого"
                     width={50}
                     height={40}
                     className="w-auto h-auto"
@@ -20,7 +20,7 @@ const Footer = () => {
             </aside>
             <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
 
-                <a className='btn btn-secondary' href='https://www.facebook.com/f.c.olympicvarna'>
+                <a className='btn btn-secondary' href='https://www.facebook.com'>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"

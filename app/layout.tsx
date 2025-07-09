@@ -8,8 +8,8 @@ const geistSans = Geist({
 });
 
 export const metadata:Metadata = {
-  title: "ФК Олимпик Варна",
-  description: "Official site of FK Olimpik Varna",
+  title: "ФК Атлетик Спортиво",
+  description: "Official site of FK Atletik Sportivo",
 };
 
 export default function RootLayout({

@@ -13,14 +13,14 @@ const Hero = () => {
             <div className="hero-overlay"></div>
             <div className="hero-content flex flex-col text-neutral-content text-center sm:flex-row">
                 <Image
-                    src="/Logo_Olympic.png"
-                    alt="ФК Олимпик Варна Лого"
+                  src="/Logo_Sportivo.png"
+                    alt="ФК Атлетик Спортиво Лого"
                     width={200}
                     height={100}
                     className="w-auto h-auto"
                 />
                 <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Добре дошли в сайта на Олимпик Варна</h1>
+                    <h1 className="mb-5 text-5xl font-bold">Добре дошли в сайта на Атлетик Спортиво</h1>
                     <p className="mb-5">
                         Клуб по футбол за деца и юноши
                     </p>

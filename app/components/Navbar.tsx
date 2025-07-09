@@ -12,8 +12,7 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-56 p-2 shadow">
-                        <li><a>За нас</a></li>
-                        <li><a>Треньори</a></li>
+                        <li><a href='/about'>За нас</a></li>
                         <li>
                             <a>График тренировки</a>
                             <ul className="p-2">
@@ -26,18 +25,19 @@ const Navbar = () => {
                         <li><a>Галерия</a></li>
                     </ul>
                 </div>
-                <Image
-                    src="/Logo_Olympic.png"
-                    alt="ФК Олимпик Варна Лого"
-                    width={50}
-                    height={20}
-                    className="w-auto h-auto"
-                />
+                <a href="/">
+                    <Image
+                        src="/Logo_Olympic.png"
+                        alt="ФК Олимпик Варна Лого"
+                        width={50}
+                        height={20}
+                        className="w-auto h-auto"
+                    />
+                </a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>За нас</a></li>
-                    <li><a>Треньори</a></li>
+                    <li><a href='/about'>За нас</a></li>
                     <li>
                         <details>
                             <summary>График тренировки</summary>

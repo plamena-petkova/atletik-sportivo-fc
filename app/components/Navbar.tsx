@@ -1,9 +1,34 @@
+'use client'
+import { supabase } from '@/lib/supabaseClient';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Navbar = () => {
+
+    const [userEmail, setUserEmail] = useState<string>('');
+
+    useEffect(() => {
+        try {
+            supabase.auth.getSession().then(data => {
+                setUserEmail(data.data.session?.user.email as string)
+            })
+        } catch (error) {
+            console.error(error);
+        }
+    }, [])
+
+    const handleSignOut = async () => {
+        try {
+            await supabase.auth.signOut();
+            setUserEmail('')
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-100 shadow-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,6 +75,7 @@ const Navbar = () => {
                     <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                 </svg>
                 </a>
+                {!userEmail ? <a className='btn btn-primary' href="/auth">За треньори</a> : <div className='flex flex-col justify-center'><button className='btn btn-primary' onClick={handleSignOut}>Излез {userEmail}</button></div>}
             </div>
         </div>
     );

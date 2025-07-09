@@ -1,5 +1,6 @@
 'use client';
 
+import { supabase } from "@/lib/supabaseClient";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -11,11 +12,13 @@ const coaches = [
 ];
 
 export default function AboutUs() {
+
+
   return (
     <>
       <Navbar />
 
-      <section className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-16 px-4">
+      <section className="min-h-screen bg-base-200 py-16 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-neutral mb-6">За нашия детски футболен клуб</h1>
 

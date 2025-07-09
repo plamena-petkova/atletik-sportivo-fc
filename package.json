@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.50.4",
     "daisyui": "^5.0.46",
     "motion": "^12.23.0",
     "next": "15.3.4",

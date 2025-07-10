@@ -40,6 +40,7 @@ const [title, setTitle] = useState<string>('')
         .from('news-images')
         .upload(fileName, imageFile);
 
+        console.log(uploadData);
 
       if (uploadError) {
         console.error('Image upload failed:', uploadError.message)

@@ -1,5 +1,6 @@
 'use client';
 
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const groups = [
@@ -35,6 +36,7 @@ export default function TrainingSchedule() {
                     ))}
                 </div>
             </section>
+            <Footer />
         </>
     );
 }

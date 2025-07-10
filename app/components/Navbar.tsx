@@ -30,7 +30,7 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-56 p-2 shadow">
                         <li><a href='/about'>За нас</a></li>
                         <li> <a href="/schedule">График тренировки</a></li>
-                        <li><a>Новини</a></li>
+                        <li><a href="/news">Новини</a></li>
 
                         <li><a href="/gallery">Галерия</a></li>
                     </ul>
@@ -51,7 +51,7 @@ const Navbar = () => {
                     <li>
                         <a href="/schedule">График тренировки</a>
                     </li>
-                    <li><a>Новини</a></li>
+                    <li><a href="/news">Новини</a></li>
 
                     <li><a href="/gallery">Галерия</a></li>
                 </ul>

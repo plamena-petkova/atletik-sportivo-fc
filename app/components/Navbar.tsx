@@ -11,7 +11,7 @@ const Navbar = () => {
     const pathname = usePathname()
     const onAuthPage = pathname === '/auth'
 
-    const { user, loading } = useAuth()
+    const { user } = useAuth()
 
 
     const handleSignOut = async () => {

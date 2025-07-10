@@ -24,6 +24,7 @@ const AddPicture = () => {
       .from('gallery-images')
       .upload(fileName, imageFile)
 
+      console.log(storageData);
     if (storageError) {
       console.error('Upload error:', storageError.message)
       setUploading(false)

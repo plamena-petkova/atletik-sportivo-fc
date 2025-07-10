@@ -9,7 +9,7 @@ import { useAuth } from '../context/AuthContext';
 
 
 const Gallery = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ const Gallery = () => {
       }
 
       const urls = data
-        .filter(file => file.name.match(/\.(jpg|jpeg|png|gif)$/i)) 
+        .filter(file => file.name.match(/\.(jpg|jpeg|png|gif)$/i))
         .map(file => {
           const { data } = supabase
             .storage
@@ -47,19 +47,13 @@ const Gallery = () => {
     fetchImages();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-spinner loading-lg"></span>
-      </div>
-    );
-  }
 
   return (
     <>
       <Navbar />
-
-      <div className="min-h-screen flex justify-center items-center py-6 px-4">
+      {loading ? <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div> : <div className="min-h-screen flex justify-center items-center py-6 px-4">
         <div className="carousel rounded-box w-full max-w-4xl overflow-hidden shadow-lg">
           {images.map((image, index) => {
             const prev = index === 0 ? images.length - 1 : index - 1;
@@ -91,8 +85,9 @@ const Gallery = () => {
             );
           })}
         </div>
-      </div>
-       {user &&<AddPicture />}
+      </div>}
+
+      {user && <AddPicture />}
       <Footer />
     </>
   );

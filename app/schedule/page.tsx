@@ -46,13 +46,6 @@ export default function TrainingSchedule() {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-spinner loading-lg"></span>
-      </div>
-    )
-  }
 
   if (error) {
     return (
@@ -66,7 +59,9 @@ export default function TrainingSchedule() {
   return (
     <>
       <Navbar />
-      <section className="max-w-4xl mx-auto p-8 bg-base-100 rounded-lg shadow-lg m-6 cursor-pointer">
+      {loading ? <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div> : <section className="max-w-4xl mx-auto p-8 bg-base-100 rounded-lg shadow-lg m-6 cursor-pointer">
         <h2 className="text-4xl font-extrabold mb-10 text-center text-primary drop-shadow-md">
           🏟️ График на тренировките
         </h2>
@@ -96,7 +91,8 @@ export default function TrainingSchedule() {
 
           ))}
         </div>
-      </section>
+      </section>}
+
 
       <EditScheduleModal
         training={selectedTraining}

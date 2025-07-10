@@ -119,7 +119,7 @@ const [title, setTitle] = useState<string>('')
                             type="file"
                             accept="image/*"
                             className="file-input file-input-bordered w-full"
-                            onChange={(e) => setImageFile(e.target.files?.[0] || null)}
+                            onChange={handleFileChange}
                         />
                         <div className="flex justify-end gap-4">
                             <button type="button" className="btn btn-outline" onClick={closeModal}>

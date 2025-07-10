@@ -5,16 +5,12 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddPicture from '../components/AddPicture';
 import { supabase } from '@/lib/supabaseClient';
+import { useAuth } from '../context/AuthContext';
 
-// const images = [
-//   'athlete-6562693_1280.jpg',
-//   'boys-7056005_1280.jpg',
-//   'football-5596790_1280.jpg',
-//   'football-7509423_1280.jpg',
-//   'goalkeeper-7893178_1280.jpg',
-// ];
 
 const Gallery = () => {
+  const {user} = useAuth();
+
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -33,7 +29,7 @@ const Gallery = () => {
       }
 
       const urls = data
-        .filter(file => file.name.match(/\.(jpg|jpeg|png|gif)$/i)) // only image files
+        .filter(file => file.name.match(/\.(jpg|jpeg|png|gif)$/i)) 
         .map(file => {
           const { data } = supabase
             .storage
@@ -96,7 +92,7 @@ const Gallery = () => {
           })}
         </div>
       </div>
-      <AddPicture />
+       {user &&<AddPicture />}
       <Footer />
     </>
   );

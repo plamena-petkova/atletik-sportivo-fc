@@ -7,8 +7,10 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import CreateNewsModal from './CreateNewsForm'
 import { useAuth } from '../context/AuthContext'
+import EditNewsModal from './EditNewsModal'
+import { useNews } from '../hooks/useNews'
 
-type NewsItem = {
+export type NewsItem = {
     id: number
     news_title?: string
     news_summary?: string
@@ -18,35 +20,30 @@ type NewsItem = {
     author_id?: string
 }
 
+type NewsUpdate = {
+    news_title?: string;
+    news_summary?: string;
+    news_content?: string;
+    news_image?: string;
+};
+
 const CardNewsList = () => {
-    const {user} = useAuth();
-    const [news, setNews] = useState<NewsItem[]>([])
+
+    const { loading, news: initialNews } = useNews()
+
+    const { user } = useAuth();
     const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
-    const [loading, setLoading] = useState(true)
     const modalRef = useRef<HTMLDialogElement>(null)
+    const [editOpen, setEditOpen] = useState(false);
+    const [news, setNews] = useState<NewsItem[]>(initialNews)
 
-    useEffect(() => {
-        const fetchNews = async () => {
-            setLoading(true)
-            const { data, error } = await supabase.from('news').select('*');
-            if (error) {
-                console.error('Error fetching news:', error.message)
-            } else {
-                setNews(data as NewsItem[])
-            }
-            setLoading(false)
-        }
 
-        fetchNews()
-    }, [])
 
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center h-screen">
-                <span className="loading loading-spinner loading-lg"></span>
-            </div>
-        )
+    const handleEdit = (newsItem: NewsItem) => {
+        setSelectedNews(newsItem)
+        setEditOpen(true)
     }
+
 
 
     const openModal = (newsItem: NewsItem) => {
@@ -59,17 +56,89 @@ const CardNewsList = () => {
         setSelectedNews(null)
     }
 
-    return (
+    const handleDeleteNews = async (id: number) => {
+        if (!confirm("Are you sure you want to delete this news?")) return;
+
+        const { error } = await supabase.from('news').delete().eq('id', id);
+
+        if (error) {
+            console.error('Delete error:', error.message);
+            alert('Failed to delete news.');
+        } else {
+            alert('News deleted successfully.');
+        }
+    };
+
+    useEffect(() => {
+        setNews(initialNews)
+    }, [initialNews])
+
+    // Realtime subscription
+    useEffect(() => {
+        const channel = supabase
+            .channel('realtime:news')
+            .on('postgres_changes', {
+                event: '*',
+                schema: 'public',
+                table: 'news',
+            }, (payload) => {
+                const newRecord = payload.new as NewsItem
+                const oldRecord = payload.old as NewsItem
+
+                setNews((current) => {
+                    switch (payload.eventType) {
+                        case 'INSERT':
+                            return [newRecord, ...current]
+                        case 'UPDATE':
+                            return current.map((item) =>
+                                item.id === newRecord.id ? newRecord : item
+                            )
+                        case 'DELETE':
+                            return current.filter((item) => item.id !== oldRecord.id)
+                        default:
+                            return current
+                    }
+                })
+            })
+            .subscribe()
+
+        return () => {
+            supabase.removeChannel(channel)
+        }
+    }, [])
+
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <span className="loading loading-spinner loading-lg"></span>
+            </div>
+        )
+    }
+
+
+
+    return loading ? (
+        <span className="loading loading-spinner loading-lg" />
+    ) : (
         <>
             <Navbar />
+            <EditNewsModal
+                newsItem={selectedNews}
+                isOpen={editOpen}
+                onClose={() => {
+                    setEditOpen(false)
+                    setSelectedNews(null)
+                }}
+            />
             <h1 className="text-2xl text-center p-6">
                 Новини за футболен клуб Атлетик Спортиво
             </h1>
             <div className="flex justify-center p-8">
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10">
-                    {news.map((newsItem) => (
-                        <div key={newsItem.id} className="card bg-base-100 w-96 shadow-sm">
-                            <figure>
+                    {news.map((newsItem) => {
+                        return <div key={newsItem.id} className="card bg-base-100 w-96 shadow-sm">
+                            <figure className='w-full h-48 overflow-hidden'>
                                 <img
                                     src={newsItem.news_image || '/football-news_img.jpg'}
                                     alt={newsItem.news_title || 'News image'}
@@ -85,9 +154,13 @@ const CardNewsList = () => {
                                 >
                                     Прочети повече
                                 </button>
+                                {user && <div className="flex justify-center gap-2">
+                                    <button onClick={() => handleEdit(newsItem)} className='btn btn-secondary'>Edit</button>
+                                    <button onClick={() => handleDeleteNews(newsItem.id)} className='btn btn-primary'>Delete</button>
+                                </div>}
                             </div>
                         </div>
-                    ))}
+                    })}
                     <div className="w-96 flex items-center justify-center align-middle">
                         {user && <CreateNewsModal />}
                     </div>

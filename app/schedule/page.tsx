@@ -100,7 +100,7 @@ export default function TrainingSchedule() {
         onClose={closeEdit}
         onUpdate={handleUpdate}
       />
-      <CreateScheduleForm />
+      {user && <CreateScheduleForm />}
       <Footer />
     </>
   )

@@ -2,7 +2,7 @@
 import { supabase } from '@/lib/supabaseClient';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {

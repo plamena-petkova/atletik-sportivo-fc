@@ -1,7 +1,7 @@
 'use client'
 
 import { supabase } from '@/lib/supabaseClient'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { formatDate } from '../utils/formatDate'
 import Navbar from './Navbar'
 import Footer from './Footer'

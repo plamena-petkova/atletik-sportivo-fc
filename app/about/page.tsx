@@ -1,6 +1,5 @@
 'use client';
 
-import { supabase } from "@/lib/supabaseClient";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 

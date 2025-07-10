@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
+import Link from 'next/link';
 
 const Navbar = () => {
 
@@ -35,7 +36,7 @@ const Navbar = () => {
                         <li><a className='text-xl' href="/gallery">Галерия</a></li>
                     </ul>
                 </div>
-                <a href="/">
+                <Link href="/">
                     <Image
                         src="/Logo_Sportivo.png"
                         alt="ФК Атлетик Спортиво Лого"
@@ -43,7 +44,7 @@ const Navbar = () => {
                         height={20}
                         className="w-auto h-auto"
                     />
-                </a>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

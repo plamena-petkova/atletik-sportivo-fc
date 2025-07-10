@@ -6,6 +6,7 @@ import { formatDate } from '../utils/formatDate'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import CreateNewsModal from './CreateNewsForm'
+import { useAuth } from '../context/AuthContext'
 
 type NewsItem = {
     id: number
@@ -18,6 +19,7 @@ type NewsItem = {
 }
 
 const CardNewsList = () => {
+    const {user} = useAuth();
     const [news, setNews] = useState<NewsItem[]>([])
     const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
     const [loading, setLoading] = useState(true)
@@ -81,13 +83,13 @@ const CardNewsList = () => {
                                     onClick={() => openModal(newsItem)}
                                     className="btn btn-secondary"
                                 >
-                                    Read More
+                                    Прочети повече
                                 </button>
                             </div>
                         </div>
                     ))}
                     <div className="w-96 flex items-center justify-center align-middle">
-                        <CreateNewsModal />
+                        {user && <CreateNewsModal />}
                     </div>
                 </div>
             </div>

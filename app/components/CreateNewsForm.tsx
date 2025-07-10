@@ -85,12 +85,12 @@ const [title, setTitle] = useState<string>('')
                 onClick={openModal}
                 aria-label="Create new"
             >
-                Add news +
+                Добави новина +
             </button>
 
             <dialog ref={modalRef} className="modal backdrop-blur-sm">
                 <div className="modal-box w-full max-w-2xl">
-                    <h2 className="text-xl font-semibold mb-4">📝 Create News</h2>
+                    <h2 className="text-xl font-semibold mb-4">📝 Добави новина</h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <input
                             type="text"

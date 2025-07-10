@@ -1,18 +1,64 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import AddPicture from '../components/AddPicture';
+import { supabase } from '@/lib/supabaseClient';
 
-const images = [
-  'athlete-6562693_1280.jpg',
-  'boys-7056005_1280.jpg',
-  'football-5596790_1280.jpg',
-  'football-7509423_1280.jpg',
-  'goalkeeper-7893178_1280.jpg',
-];
+// const images = [
+//   'athlete-6562693_1280.jpg',
+//   'boys-7056005_1280.jpg',
+//   'football-5596790_1280.jpg',
+//   'football-7509423_1280.jpg',
+//   'goalkeeper-7893178_1280.jpg',
+// ];
 
 const Gallery = () => {
+  const [images, setImages] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .storage
+        .from('gallery-images')
+        .list('', { limit: 100, offset: 0 });
+
+      if (error) {
+        console.error('Error listing images:', error.message);
+        setLoading(false);
+        return;
+      }
+
+      const urls = data
+        .filter(file => file.name.match(/\.(jpg|jpeg|png|gif)$/i)) // only image files
+        .map(file => {
+          const { data } = supabase
+            .storage
+            .from('gallery-images')
+            .getPublicUrl(file.name);
+
+          const publicUrl = data.publicUrl;
+          return publicUrl;
+        });
+
+      setImages(urls);
+      setLoading(false);
+    };
+
+    fetchImages();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar />
@@ -31,7 +77,7 @@ const Gallery = () => {
               >
                 <div className="w-full">
                   <img
-                    src={`/images/${image}`}
+                    src={image}
                     className="w-full h-full object-contain rounded-box"
                     alt={`Слайд ${index + 1}`}
                   />
@@ -50,7 +96,8 @@ const Gallery = () => {
           })}
         </div>
       </div>
-      <Footer/>
+      <AddPicture />
+      <Footer />
     </>
   );
 };

@@ -28,11 +28,11 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-56 p-2 shadow">
-                        <li><a href='/about'>За нас</a></li>
-                        <li> <a href="/schedule">График тренировки</a></li>
-                        <li><a href="/news">Новини</a></li>
+                        <li><a className='text-xl' href='/about'>За нас</a></li>
+                        <li> <a className='text-xl' href="/schedule">График тренировки</a></li>
+                        <li><a className='text-xl' href="/news">Новини</a></li>
 
-                        <li><a href="/gallery">Галерия</a></li>
+                        <li><a className='text-xl' href="/gallery">Галерия</a></li>
                     </ul>
                 </div>
                 <a href="/">
@@ -47,13 +47,13 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a href='/about'>За нас</a></li>
+                    <li><a className='text-xl' href='/about'>За нас</a></li>
                     <li>
-                        <a href="/schedule">График тренировки</a>
+                        <a className='text-xl' href="/schedule">График тренировки</a>
                     </li>
-                    <li><a href="/news">Новини</a></li>
+                    <li><a className='text-xl' href="/news">Новини</a></li>
 
-                    <li><a href="/gallery">Галерия</a></li>
+                    <li><a className='text-xl' href="/gallery">Галерия</a></li>
                 </ul>
             </div>
             <div className="navbar-end">

@@ -39,7 +39,7 @@ const [title, setTitle] = useState<string>('')
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from('news-images')
         .upload(fileName, imageFile);
-        console.log('Upload data',uploadData, fileName);
+
 
       if (uploadError) {
         console.error('Image upload failed:', uploadError.message)

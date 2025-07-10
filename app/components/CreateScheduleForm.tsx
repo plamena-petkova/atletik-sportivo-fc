@@ -34,7 +34,7 @@ export default function CreateScheduleForm() {
         if (error) {
             alert('❌ Грешка при създаване на график: ' + error.message)
         } else {
-            alert('✅ Успешно създаден график!')
+            // alert('✅ Успешно създаден график!')
             setLabel('')
             setDays('')
             setTime('');

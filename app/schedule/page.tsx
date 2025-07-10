@@ -31,6 +31,7 @@ export default function TrainingSchedule() {
     setGroups((prev) =>
       prev.map((g) => (g.id === updatedTraining.id ? updatedTraining : g))
     )
+    console.log(groups);
   }
 
   const handleDeleteTraining = async (id: number) => {

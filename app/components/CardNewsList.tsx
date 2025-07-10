@@ -20,31 +20,20 @@ export type NewsItem = {
     author_id?: string
 }
 
-type NewsUpdate = {
-    news_title?: string;
-    news_summary?: string;
-    news_content?: string;
-    news_image?: string;
-};
-
 const CardNewsList = () => {
 
-    const { loading, news: initialNews } = useNews()
+    const { loading, news } = useNews()
 
     const { user } = useAuth();
     const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
     const modalRef = useRef<HTMLDialogElement>(null)
     const [editOpen, setEditOpen] = useState(false);
-    const [news, setNews] = useState<NewsItem[]>(initialNews)
-
 
 
     const handleEdit = (newsItem: NewsItem) => {
         setSelectedNews(newsItem)
         setEditOpen(true)
     }
-
-
 
     const openModal = (newsItem: NewsItem) => {
         setSelectedNews(newsItem)
@@ -69,44 +58,6 @@ const CardNewsList = () => {
         }
     };
 
-    useEffect(() => {
-        setNews(initialNews)
-    }, [initialNews])
-
-    // Realtime subscription
-    useEffect(() => {
-        const channel = supabase
-            .channel('realtime:news')
-            .on('postgres_changes', {
-                event: '*',
-                schema: 'public',
-                table: 'news',
-            }, (payload) => {
-                const newRecord = payload.new as NewsItem
-                const oldRecord = payload.old as NewsItem
-
-                setNews((current) => {
-                    switch (payload.eventType) {
-                        case 'INSERT':
-                            return [newRecord, ...current]
-                        case 'UPDATE':
-                            return current.map((item) =>
-                                item.id === newRecord.id ? newRecord : item
-                            )
-                        case 'DELETE':
-                            return current.filter((item) => item.id !== oldRecord.id)
-                        default:
-                            return current
-                    }
-                })
-            })
-            .subscribe()
-
-        return () => {
-            supabase.removeChannel(channel)
-        }
-    }, [])
-
 
     if (loading) {
         return (
@@ -115,8 +66,6 @@ const CardNewsList = () => {
             </div>
         )
     }
-
-
 
     return loading ? (
         <span className="loading loading-spinner loading-lg" />

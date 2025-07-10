@@ -155,7 +155,7 @@ const CardNewsList = () => {
                                     Прочети повече
                                 </button>
                                 {user && <div className="flex justify-center gap-2">
-                                    <button onClick={() => handleEdit(newsItem)} className='btn btn-secondary'>Edit</button>
+                                    <button onClick={() => handleEdit(newsItem)} className='btn btn-success'>Edit</button>
                                     <button onClick={() => handleDeleteNews(newsItem.id)} className='btn btn-primary'>Delete</button>
                                 </div>}
                             </div>

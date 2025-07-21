@@ -35,22 +35,22 @@ const Features = () => {
                     </div>
                 </div>
             </section>
-            <div className="flex justify-around items-start gap-6 p-6 ">
-                <div className="w-1/3 p-4 justify-center items-center text-center">
-                    <p className="text-lg">
-                        Спортен Комплекс Технически университет<br />
-                        Варна, 9000,<br />
-                        България
-                    </p>
-                </div>
-                <div className="w-2/3">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1027.871144917291!2d27.932621003382547!3d43.22503694340325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a4554bd40eef77%3A0x34167ab9e7bd2939!2z0KHQv9C-0YDRgtC10L0g0LrQvtC80L_Qu9C10LrRgSDigJ7QotC10YXQvdC40YfQtdGB0LrQuCDRg9C90LjQstC10YDRgdC40YLQtdGC4oCdIC0g0JLQsNGA0L3QsA!5e0!3m2!1sbg!2sbg!4v1752046622651!5m2!1sbg!2sbg" width="100%"
-                        height="450"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+            <div className="flex flex-col justify-around gap-6 p-6 items-center">
+
+                <p className="text-lg text-center">
+                    Спортен Комплекс Технически университет<br />
+                    Варна, 9000,<br />
+                    България
+                </p>
+
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1027.871144917291!2d27.932621003382547!3d43.22503694340325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a4554bd40eef77%3A0x34167ab9e7bd2939!2z0KHQv9C-0YDRgtC10L0g0LrQvtC80L_Qu9C10LrRgSDigJ7QotC10YXQvdC40YfQtdGB0LrQuCDRg9C90LjQstC10YDRgdC40YLQtdGC4oCdIC0g0JLQsNGA0L3QsA!5e0!3m2!1sbg!2sbg!4v1752046622651!5m2!1sbg!2sbg" width="100%"
+                    height="450"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"></iframe>
+
             </div>
         </>
     );

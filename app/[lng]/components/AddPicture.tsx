@@ -2,8 +2,10 @@
 
 import { useRef, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { useTranslation } from 'react-i18next';
 
 const AddPicture = () => {
+  const { t } = useTranslation();
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -24,7 +26,7 @@ const AddPicture = () => {
       .from('gallery-images')
       .upload(fileName, imageFile)
 
-      console.log(storageData);
+    console.log(storageData);
     if (storageError) {
       console.error('Upload error:', storageError.message)
       setUploading(false)
@@ -57,7 +59,7 @@ const AddPicture = () => {
             />
             <div className="flex justify-end gap-4">
               <button type="button" className="btn btn-outline" onClick={closeModal}>
-                Затвори
+                {t('btn-close')}
               </button>
               <button type="submit" className="btn btn-primary" disabled={uploading}>
                 {uploading ? 'Качване...' : 'Качи'}

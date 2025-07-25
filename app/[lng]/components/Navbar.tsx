@@ -1,17 +1,22 @@
 'use client'
 import { supabase } from '@/lib/supabaseClient';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
-
+    const { t } = useTranslation();
     const pathname = usePathname()
     const onAuthPage = pathname === '/auth'
 
-    const { user } = useAuth()
+    const { user } = useAuth();
+
+    const params = useParams();
+    const lng = params.lng ?? 'bg';
 
 
     const handleSignOut = async () => {
@@ -29,14 +34,14 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-56 p-2 shadow">
-                        <li><a className='text-xl' href='/about'>За нас</a></li>
-                        <li> <a className='text-xl' href="/schedule">График тренировки</a></li>
-                        <li><a className='text-xl' href="/news">Новини</a></li>
+                        <li><a className='text-xl' href={`/${lng}/about`}>{t('about')}</a></li>
+                        <li> <a className='text-xl' href={`/${lng}/schedule`}>{t('schedule')}</a></li>
+                        <li><a className='text-xl' href={`/${lng}/news`}>{t('news')}</a></li>
 
-                        <li><a className='text-xl' href="/gallery">Галерия</a></li>
+                        <li><a className='text-xl' href={`/${lng}/gallery`}>{t('gallery')}</a></li>
                     </ul>
                 </div>
-                <Link href="/">
+                <Link href="/bg">
                     <Image
                         src="/Logo_Sportivo.png"
                         alt="ФК Атлетик Спортиво Лого"
@@ -45,16 +50,15 @@ const Navbar = () => {
                         className="w-auto h-auto"
                     />
                 </Link>
+                <LanguageSwitcher />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a className='text-xl' href='/about'>За нас</a></li>
-                    <li>
-                        <a className='text-xl' href="/schedule">График тренировки</a>
-                    </li>
-                    <li><a className='text-xl' href="/news">Новини</a></li>
+                    <li><a className='text-xl' href={`/${lng}/about`}>{t('about')}</a></li>
+                    <li> <a className='text-xl' href={`/${lng}/schedule`}>{t('schedule')}</a></li>
+                    <li><a className='text-xl' href={`/${lng}/news`}>{t('news')}</a></li>
 
-                    <li><a className='text-xl' href="/gallery">Галерия</a></li>
+                    <li><a className='text-xl' href={`/${lng}/gallery`}>{t('gallery')}</a></li>
                 </ul>
             </div>
             <div className="navbar-end">
@@ -69,11 +73,11 @@ const Navbar = () => {
                 </a>
 
                 {!user && !onAuthPage ? (
-                    <a className='btn btn-primary' href="/auth">За треньори</a>
+                    <a className='btn btn-primary' href={`/${lng}/auth`}> {t('btn-coaches')}</a>
                 ) : user ? (
                     <div className='flex flex-col justify-center'>
                         <button className='btn btn-primary' onClick={handleSignOut}>
-                            Излез {user.email}
+                            {t('logout')} {user.email}
                         </button>
                     </div>
                 ) : null}

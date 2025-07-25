@@ -1,19 +1,21 @@
 'use client';
 import Image from 'next/image';
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+    const {t} = useTranslation();
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     const handleOpen = () => {
         if (dialogRef.current) {
-            dialogRef.current.showModal(); // Open the dialog
+            dialogRef.current.showModal(); 
         }
     };
 
     const handleClose = () => {
         if (dialogRef.current) {
-            dialogRef.current.close(); // Close the dialog
+            dialogRef.current.close(); 
         }
     };
 
@@ -39,7 +41,7 @@ const Hero = () => {
                         <p className='text-secondary text-md'>📞+359887444333</p>
                         <p className='text-secondary text-md'>📞+359886333444</p>
                         <div className="modal-action">
-                            <button onClick={handleClose} className="btn">Затвори</button>
+                            <button onClick={handleClose} className="btn">{t('btn-close')}</button>
                         </div>
                     </div>
                 </dialog>

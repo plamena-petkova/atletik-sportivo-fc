@@ -14,10 +14,6 @@ export const metadata: Metadata = {
   description: "Official site of FK Atletik Sportivo",
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-  params: { lng: string };
-}
 
 export default async function RootLayout({ children, params }: { children: React.ReactNode; params: Promise<{ lng: string }> }) {
   const resolvedParams = await params; 

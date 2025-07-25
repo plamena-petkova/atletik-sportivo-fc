@@ -20,20 +20,24 @@ export default function LanguageDropdown() {
 
   const currentLanguageData = languages.find(({ code }) => code === currentLang) || languages[0];
 
-  const changeLanguage = (lng: string) => {
-    if (lng === currentLang) return;
+const changeLanguage = (lng: string) => {
+  if (lng === currentLang) return;
 
-    i18n.changeLanguage(lng);
+  i18n.changeLanguage(lng);
 
-    const segments = pathname.split('/');
-    if (segments.length < 2) {
-      router.push(`/${lng}${pathname}`);
-      return;
-    }
-    segments[1] = lng;
-    const newPath = segments.join('/');
-    router.push(newPath);
-  };
+  // Save to cookie for middleware
+  document.cookie = `lang=${lng}; path=/; max-age=31536000`;
+
+  const segments = pathname.split('/');
+  if (segments.length < 2) {
+    router.push(`/${lng}${pathname}`);
+    return;
+  }
+  segments[1] = lng;
+  const newPath = segments.join('/');
+  router.push(newPath);
+};
+
 
   return (
     <div className="dropdown dropdown-end">

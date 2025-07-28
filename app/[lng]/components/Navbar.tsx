@@ -39,6 +39,7 @@ const Navbar = () => {
                         <li><a className='text-xl' href={`/${lng}/news`}>{t('news')}</a></li>
 
                         <li><a className='text-xl' href={`/${lng}/gallery`}>{t('gallery')}</a></li>
+                        <LanguageSwitcher />
                     </ul>
                 </div>
                 <Link href="/bg">
@@ -50,18 +51,18 @@ const Navbar = () => {
                         className="w-auto h-auto"
                     />
                 </Link>
-                <LanguageSwitcher />
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden lg:flex lg:align-middle">
                 <ul className="menu menu-horizontal px-1">
                     <li><a className='text-xl' href={`/${lng}/about`}>{t('about')}</a></li>
                     <li> <a className='text-xl' href={`/${lng}/schedule`}>{t('schedule')}</a></li>
                     <li><a className='text-xl' href={`/${lng}/news`}>{t('news')}</a></li>
 
                     <li><a className='text-xl' href={`/${lng}/gallery`}>{t('gallery')}</a></li>
+                    <LanguageSwitcher />
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end flex flex-col md:flex-row items-end gap-2 ">
                 <a className='btn btn-secondary mr-4' href="https://www.facebook.com/" target='_blank'> <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"

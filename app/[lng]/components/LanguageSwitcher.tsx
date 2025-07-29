@@ -25,7 +25,6 @@ const changeLanguage = (lng: string) => {
 
   i18n.changeLanguage(lng);
 
-  // Save to cookie for middleware
   document.cookie = `lang=${lng}; path=/; max-age=31536000`;
 
   const segments = pathname.split('/');
@@ -40,7 +39,7 @@ const changeLanguage = (lng: string) => {
 
 
   return (
-    <div className="dropdown dropdown-end">
+    <div className="dropdown">
       <label tabIndex={0} className="btn btn-outline m-1">
         {currentLanguageData.flag}
       </label>
